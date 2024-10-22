@@ -15,9 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en" className={`${adorNoirrit.variable}`}>
-            <body>
-                <h1>Hello world</h1>
-            </body>
+            <body>{children}</body>
         </html>
     );
 }
