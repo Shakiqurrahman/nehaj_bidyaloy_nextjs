@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 :root {
-    --font-ador-noirrit: "AdorNoirritV1", "AdorNoirritV2", sans-serif;
+    --font-ador-noirrit: "AdorNoirritV1", sans-serif;
 }
 
 body {
@@ -17,6 +17,6 @@ body {
 
 /* Apply Noto Serif Bengali for Bengali text */
 .bengali-text {
-    font-family: (var(--font-ador-noirrit));
+    font-family: var(--font-ador-noirrit);
     font-weight: 400;
 }
