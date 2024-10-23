@@ -1,10 +1,9 @@
-import localFont from "next/font/local";
+import { Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
 
-const adorNoirrit = localFont({
-    src: "../../public/fonts/LiAdorNoirritAV1VR-VF.ttf",
-    variable: "--font-ador-noirrit",
-    weight: "100 900",
+const notoSerifBengali = Noto_Serif_Bengali({
+    subsets: ["latin", "bengali"],
+    display: "swap",
 });
 
 export const metadata = {
@@ -14,7 +13,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en" className={`${adorNoirrit.variable}`}>
+        <html lang="en" className={notoSerifBengali.className}>
             <body>{children}</body>
         </html>
     );

@@ -1,22 +1,14 @@
-/* Noto Serif Bengali font  */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@100..900&display=swap");
+@import url("./fonts/fonts.css");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --font-ador-noirrit: "AdorNoirritV1", sans-serif;
-}
-
 body {
-    font-family: "Noto Serif Bengali", serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
 
-/* Apply Noto Serif Bengali for Bengali text */
-.bengali-text {
-    font-family: var(--font-ador-noirrit);
-    font-weight: 400;
+.font-ador {
+    font-family: "ador", serif;
 }
