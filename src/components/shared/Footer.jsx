@@ -17,18 +17,18 @@ const Footer = () => {
                     কর্তৃপক্ষের অনুমতি ছাড়া কোথাও প্রকাশ করা অবৈধ ৷
                 </p>
             </div>
-            <div className="mb-10 flex justify-center gap-2">
+            <div className="mb-10 flex justify-center gap-3">
                 <Link href="#" target="_blank">
-                    <FaFacebookF className="bg-[#1877F2] p-2 size-8 rounded-full text-base hover:-translate-y-2 hover:opacity-85 duration-300" />
+                    <FaFacebookF className="bg-[#1877F2] p-2 size-8 rounded-md text-base hover:-translate-y-2 hover:opacity-85 duration-300" />
                 </Link>
                 <Link href="#" target="_blank">
-                    <FaXTwitter className="bg-[#1DA1F2] p-2 size-8 rounded-full text-base hover:-translate-y-2 hover:opacity-85 duration-300" />
+                    <FaXTwitter className="bg-[#1DA1F2] p-2 size-8 rounded-md text-base hover:-translate-y-2 hover:opacity-85 duration-300" />
                 </Link>
                 <Link href="#" target="_blank">
-                    <FaInstagram className="bg-[#262626] p-2 size-8 rounded-full text-base hover:-translate-y-2 hover:opacity-85 duration-300" />
+                    <FaInstagram className="bg-[#262626] p-2 size-8 rounded-md text-base hover:-translate-y-2 hover:opacity-85 duration-300" />
                 </Link>
                 <Link href="#" target="_blank">
-                    <FaYoutube className="bg-[#FF0000] p-2 size-8 rounded-full text-base hover:-translate-y-2 hover:opacity-85 duration-300" />
+                    <FaYoutube className="bg-[#FF0000] p-2 size-8 rounded-md text-base hover:-translate-y-2 hover:opacity-85 duration-300" />
                 </Link>
             </div>
             <p className="text-center bg-primary py-3">

@@ -1,6 +1,7 @@
 import Footer from "@/components/shared/Footer";
 import { Noto_Sans, Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/shared/Header/Header";
 
 const notoSerifBengali = Noto_Serif_Bengali({
     subsets: ["latin", "bengali"],
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
             className={(notoSerifBengali.className, notoSans.className)}
         >
             <body>
+                <Header />
                 {children}
                 <Footer />
             </body>
