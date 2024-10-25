@@ -25,13 +25,11 @@ const Header = () => {
                         <FaYoutube className="bg-[#FF0000] p-1.5 size-7 rounded-md text-base hover:bg-primary duration-300" />
                     </Link>
                 </div>
-                <nav className="flex gap-4">
+                <nav className="flex gap-4 text-lg font-semibold">
                     <Link
                         href={"/amader-kotha"}
                         className={`link ${
-                            pathname === "/amader-kotha"
-                                ? "text-primary"
-                                : ""
+                            pathname === "/amader-kotha" ? "text-primary" : ""
                         } text-black hover:text-primary duration-300`}
                     >
                         আমাদের কথা
@@ -39,9 +37,7 @@ const Header = () => {
                     <Link
                         href={"/লেখক-তালিকা"}
                         className={`link ${
-                            pathname === "/লেখক-তালিকা"
-                                ? "text-primary"
-                                : ""
+                            pathname === "/লেখক-তালিকা" ? "text-primary" : ""
                         } text-black hover:text-primary duration-300`}
                     >
                         লেখক তালিকা
@@ -49,9 +45,7 @@ const Header = () => {
                     <Link
                         href={"/নোটিশ-বোর্ড"}
                         className={`link ${
-                            pathname === "/নোটিশ-বোর্ড"
-                                ? "text-primary"
-                                : ""
+                            pathname === "/নোটিশ-বোর্ড" ? "text-primary" : ""
                         } text-black hover:text-primary duration-300`}
                     >
                         নোটিশ বোর্ড
