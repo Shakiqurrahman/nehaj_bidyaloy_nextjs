@@ -5,8 +5,8 @@ import CoverPhoto from "/public/nehaz-bidyalay-logo.jpg";
 
 const AmaderKotha = () => {
   return (
-    <div className="max-width my-10">
-      <h1 className="text-2xl font-ador text-center">আমাদের কথা</h1>
+    <div className="max-width my-20">
+      <h1 className="text-2xl font-ador text-center mb-10">আমাদের কথা</h1>
       <div className="flex items-center gap-2">
         <div className="w-1/2 text-xl leading-[36px]">
           <p className="mb-5">
