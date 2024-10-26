@@ -16,6 +16,7 @@ const Authors = () => {
           className="p-4 text-center bg-white text-black shadow-box hover:shadow-box-lg duration-500 group hover:bg-accent"
         >
           <Image
+            placeholder="blur"
             src={author1}
             alt="Author image"
             className="size-[200px] rounded-full mx-auto object-cover object-top"
@@ -30,6 +31,7 @@ const Authors = () => {
           className="p-4 text-center bg-white text-black shadow-box hover:shadow-box-lg duration-500 group hover:bg-accent"
         >
           <Image
+            placeholder="blur"
             src={author2}
             alt="Author image"
             className="size-[200px] rounded-full mx-auto object-cover object-top"
@@ -44,6 +46,7 @@ const Authors = () => {
           className="p-4 text-center bg-white text-black shadow-box hover:shadow-box-lg duration-500 group hover:bg-accent"
         >
           <Image
+            placeholder="blur"
             src={author3}
             alt="Author image"
             className="size-[200px] rounded-full mx-auto object-cover object-top"
