@@ -7,8 +7,8 @@ const AmaderKotha = () => {
   return (
     <div className="max-width my-20">
       <h1 className="text-2xl font-ador text-center mb-10">আমাদের কথা</h1>
-      <div className="flex items-center gap-2">
-        <div className="w-1/2 text-xl leading-[36px]">
+      <div className="flex flex-wrap sm:flex-nowrap items-center gap-2">
+        <div className="w-full sm:w-1/2 text-xl leading-[36px] mb-5 sm:mb-0">
           <p className="mb-5">
             যোগাযোগ। শিল্প, সাহিত্য, সংস্কৃতি, সমাজ, দর্শন, রাজনীতি, ইতিহাস ও
             ভবিষ্যৎ-ভাবনা— ইত্যকার-বিষয়ক ওয়েবজিন। নির্মোহ ও নৈর্বক্তিক পন্থায়
@@ -24,8 +24,9 @@ const AmaderKotha = () => {
             এই নতুন সিলসিলায় আপনাদের স্বাগত।
           </p>
         </div>
-        <div className="w-1/2">
+        <div className="w-full sm:w-1/2">
           <Image
+            placeholder="blur"
             src={CoverPhoto}
             alt="Nehaj-Bidyalot cover photo"
             priority
