@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRef, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoSearch } from "react-icons/io5";
 
-const SidePanel = ({ close, isOpen }) => {
+const SidePanel = ({ isOpen }) => {
   const pathname = usePathname();
 
   const navLinks = [
@@ -70,201 +70,98 @@ const SidePanel = ({ close, isOpen }) => {
 
   const dropdownRef = useRef(null);
 
-  const [isCollapse, setIsCollapse] = useState(false);
+  const [isCollapse, setIsCollapse] = useState(null);
+
+  const handleCollapse = (id) => {
+    setIsCollapse(isCollapse === id ? null : id);
+  };
+
+  console.log(isCollapse);
 
   return (
     <div
-      className={`md:hidden fixed top-0 left-0 h-screen  w-full bg-black/80 z-[99999999999] duration-500  ${
-        isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+      className={`sm:hidden absolute top-full left-0  w-full bg-white duration-500 border-t z-[99999] ${
+        isOpen
+          ? "opacity-100 visible translate-y-0"
+          : "opacity-0 invisible -translate-y-full"
       }`}
     >
-      <div
-        className={`${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        } duration-500  h-full w-full max-w-[360px] bg-white shadow relative overflow-y-auto`}
-      >
-        <form className="w-full p-3 relative">
-          <input
-            type="text"
-            placeholder="এখানে লিখুন..."
-            className="w-full block border-b-2 border-secondary outline-none p-3"
-          />
-          <button
-            type="submit"
-            className="absolute top-1/2 -translate-y-1/2 right-5"
-          >
-            <IoSearch className="text-2xl text-secondary" />
-          </button>
-        </form>
+      <form className="w-full p-3 relative">
+        <input
+          type="text"
+          placeholder="এখানে লিখুন..."
+          className="w-full block border-b-2 border-secondary outline-none p-3"
+        />
+        <button
+          type="submit"
+          className="absolute top-1/2 -translate-y-1/2 right-5"
+        >
+          <IoSearch className="text-2xl text-secondary" />
+        </button>
+      </form>
+      {navLinks?.length > 0 && (
         <ul className="px-3">
-          <li>
-            <button
-              onClick={() => setIsCollapse(!isCollapse)}
-              className={`text-lg font-ador p-2 gap-3 border-b flex items-center w-full text-start hover:text-primary duration-300 ${
-                isCollapse && "text-primary bg-gray-100"
-              }`}
-            >
-              ক্যাটাগরি{" "}
-              <IoIosArrowDown
-                className={`${
-                  isCollapse ? "-rotate-180" : "rotate-0"
-                } hover:text-primary transition-transform duration-300`}
-              />
-            </button>
-          </li>
-          <li
-            ref={dropdownRef}
-            style={{
-              height: isCollapse ? dropdownRef.current.scrollHeight : 0,
-              overflow: "hidden",
-              transition: "height 0.3s ease",
-            }}
-          >
-            <ul className="pl-10">
-              <li>
+          {navLinks?.map((links, index) => (
+            <Fragment key={index}>
+              <li className="border-b text-lg font-ador flex w-full justify-between">
                 <Link
-                  href={"/"}
-                  className={`px-3 py-2 font-ador hover:text-primary duration-300 block border-b ${
+                  href={`/category/${links?.categorySlug}`}
+                  className={`${
                     pathname === "/404" ? "text-primary" : ""
-                  }`}
+                  } hover:text-primary p-2 grow`}
                 >
-                  তত্ত্ব
+                  {links?.category}
                 </Link>
+                {links?.subCategories?.length > 0 && (
+                  <button
+                    onClick={() => handleCollapse(index)}
+                    className={`border-l py-2 px-4 shrink-0 gap-3 hover:text-primary duration-300 ${
+                      isCollapse === index && "text-primary bg-gray-100"
+                    }`}
+                  >
+                    <IoIosArrowDown
+                      className={`${
+                        isCollapse === index ? "-rotate-180" : "rotate-0"
+                      } hover:text-primary transition-transform duration-300`}
+                    />
+                  </button>
+                )}
               </li>
-              <li>
-                <Link
-                  href={"/"}
-                  className={`px-3 py-2 font-ador hover:text-primary duration-300 block border-b ${
-                    pathname === "/404" ? "text-primary" : ""
-                  }`}
+              {links?.subCategories?.length > 0 && (
+                <li
+                  ref={dropdownRef}
+                  style={{
+                    height:
+                      isCollapse === index
+                        ? dropdownRef.current.scrollHeight
+                        : 0,
+                    overflow: "hidden",
+                    transition: "height 0.3s ease",
+                  }}
                 >
-                  ইতিহাস
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={"/"}
-                  className={`px-3 py-2 font-ador hover:text-primary duration-300 block border-b ${
-                    pathname === "/404" ? "text-primary" : ""
-                  }`}
-                >
-                  রাজকূট
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={"/"}
-                  className={`px-3 py-2 font-ador hover:text-primary duration-300 block border-b ${
-                    pathname === "/404" ? "text-primary" : ""
-                  }`}
-                >
-                  শিক্ষা
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={"/"}
-                  className={`px-3 py-2 font-ador hover:text-primary duration-300 block border-b ${
-                    pathname === "/404" ? "text-primary" : ""
-                  }`}
-                >
-                  সংস্কৃতি
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={"/"}
-                  className={`px-3 py-2 font-ador hover:text-primary duration-300 block border-b ${
-                    pathname === "/404" ? "text-primary" : ""
-                  }`}
-                >
-                  প্রতিবেশ
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={"/"}
-                  className={`px-3 py-2 font-ador hover:text-primary duration-300 block border-b ${
-                    pathname === "/404" ? "text-primary" : ""
-                  }`}
-                >
-                  লিঙ্গ
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={"/"}
-                  className={`px-3 py-2 font-ador hover:text-primary duration-300 block border-b ${
-                    pathname === "/404" ? "text-primary" : ""
-                  }`}
-                >
-                  সক্রিয়তা
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={"/"}
-                  className={`px-3 py-2 font-ador hover:text-primary duration-300 block border-b ${
-                    pathname === "/404" ? "text-primary" : ""
-                  }`}
-                >
-                  বইঘর
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={"/"}
-                  className={`px-3 py-2 font-ador hover:text-primary duration-300 block border-b ${
-                    pathname === "/404" ? "text-primary" : ""
-                  }`}
-                >
-                  বিজ্ঞান
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={"/"}
-                  className={`px-3 py-2 font-ador hover:text-primary duration-300 block border-b ${
-                    pathname === "/404" ? "text-primary" : ""
-                  }`}
-                >
-                  গণসংগ্রাম
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={"/"}
-                  className={`px-3 py-2 font-ador hover:text-primary duration-300 block border-b ${
-                    pathname === "/404" ? "text-primary" : ""
-                  }`}
-                >
-                  ভিডিও
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={"/"}
-                  className={`px-3 py-2 font-ador hover:text-primary duration-300 block border-b ${
-                    pathname === "/404" ? "text-primary" : ""
-                  }`}
-                >
-                  ছবিঘর
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={"/"}
-                  className={`px-3 py-2 font-ador hover:text-primary duration-300 block border-b ${
-                    pathname === "/404" ? "text-primary" : ""
-                  }`}
-                >
-                  লেখক
-                </Link>
-              </li>
-            </ul>
-          </li>
+                  <ul className="pl-10">
+                    {links?.subCategories?.map((subLinks, index) => (
+                      <li key={index}>
+                        <Link
+                          href={`/category/${links?.categorySlug}/${subLinks?.subCategorySlug}`}
+                          className={`px-3 py-2 font-ador hover:text-primary duration-300 block border-b ${
+                            pathname ===
+                            `/category/${links?.categorySlug}/${subLinks?.subCategorySlug}`
+                              ? "text-primary"
+                              : ""
+                          }`}
+                        >
+                          {subLinks?.subCategory}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              )}
+            </Fragment>
+          ))}
         </ul>
-      </div>
+      )}
     </div>
   );
 };

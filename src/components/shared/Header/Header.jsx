@@ -12,7 +12,7 @@ const Header = () => {
   const [openSreachBox, setOpenSearchBox] = useState(false);
 
   return (
-    <header className="bg-[#fbfaf6] hidden md:block">
+    <header className="bg-[#fbfaf6] hidden sm:block">
       <div className="flex justify-between items-center max-width">
         <nav className="flex gap-4 py-2 text-lg">
           <Link

@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { ImCross } from "react-icons/im";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 import { usePathname } from "next/navigation";
@@ -65,33 +66,29 @@ const Navbar = () => {
       categorySlug: "study-circle",
       category: "পাঠচক্র",
     },
-    {
-      categorySlug: "author",
-      category: "লেখক",
-    },
   ];
 
   const [openSidePanel, setOpenSidePanel] = useState(false);
 
-  useEffect(() => {
-    if (openSidePanel) {
-      // Disable scrolling
-      document.body.style.overflow = "hidden";
-    } else {
-      // Enable scrolling
-      document.body.style.overflow = "auto";
-    }
+  // useEffect(() => {
+  //   if (openSidePanel) {
+  //     // Disable scrolling
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     // Enable scrolling
+  //     document.body.style.overflow = "auto";
+  //   }
 
-    // Cleanup function to ensure scrolling is enabled when component unmounts
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [openSidePanel]);
+  //   // Cleanup function to ensure scrolling is enabled when component unmounts
+  //   return () => {
+  //     document.body.style.overflow = "auto";
+  //   };
+  // }, [openSidePanel]);
 
   return (
     <>
-      <nav className="bg-white py-3 shadow">
-        <div className="max-width flex items-center justify-between">
+      <nav className="bg-white  shadow sticky top-0 w-full">
+        <div className="max-width flex items-center justify-between py-3 bg-white relative z-[999999999]">
           <Link href={"/"} className="shrink-0">
             <Image
               src={Logo}
@@ -100,7 +97,7 @@ const Navbar = () => {
               priority
             />
           </Link>
-          <nav className="flex md:hidden gap-4 py-2 sm:text-lg ml-auto mr-3">
+          <nav className="flex sm:hidden gap-4 py-2 sm:text-lg ml-auto mr-3">
             <Link
               href={"/about-us"}
               className={`${
@@ -126,20 +123,26 @@ const Navbar = () => {
               যোগাযোগ
             </Link>
           </nav>
-          <button
-            className="block md:hidden hover:text-primary duration-300 text-black"
-            onClick={() => setOpenSidePanel(true)}
-          >
-            <GiHamburgerMenu className="text-xl" />
-          </button>
+          <div className="flex items-center justify-end sm:hidden w-5">
+            <button
+              className=" hover:text-primary duration-300 text-black"
+              onClick={() => setOpenSidePanel(!openSidePanel)}
+            >
+              {openSidePanel ? (
+                <ImCross />
+              ) : (
+                <GiHamburgerMenu className="text-xl" />
+              )}
+            </button>
+          </div>
           <div className="flex items-center">
-            <ul className="hidden md:flex items-center gap-1">
+            <ul className="hidden sm:flex items-center gap-1">
               {navLinks?.map((links, index) => (
                 <li key={index} className="group relative">
                   <Link
                     href={`/${links?.categorySlug}`}
                     className={`${
-                      pathname === `/${links?.categorySlug}`
+                      pathname === `/category/${links?.categorySlug}`
                         ? "text-primary"
                         : ""
                     } px-3 py-2 text-lg font-ador hover:bg-gray-100 flex items-center justify-between gap-2 hover:text-primary duration-300`}
@@ -154,7 +157,7 @@ const Navbar = () => {
                       {links?.subCategories?.map((subLinks, index) => (
                         <li key={index}>
                           <Link
-                            href={`/${subLinks?.subCategorySlug}`}
+                            href={`/category/${links?.categorySlug}/${subLinks?.subCategorySlug}`}
                             className={`${
                               pathname === `/${subLinks?.subCategorySlug}`
                                 ? "text-primary"
@@ -169,11 +172,21 @@ const Navbar = () => {
                   )}
                 </li>
               ))}
+              <li>
+                <Link
+                  href={"/author"}
+                  className={`${
+                    pathname === "/author" ? "text-primary" : ""
+                  } px-3 py-2 text-lg font-ador hover:bg-gray-100 flex items-center justify-between gap-2 hover:text-primary duration-300`}
+                >
+                  লেখক
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
+        <SidePanel isOpen={openSidePanel} />
       </nav>
-      <SidePanel close={setOpenSidePanel} isOpen={openSidePanel} />
     </>
   );
 };
