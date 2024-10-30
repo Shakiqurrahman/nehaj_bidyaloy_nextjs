@@ -2,55 +2,57 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { useState } from "react";
+import { ImCross } from "react-icons/im";
+import { IoSearch } from "react-icons/io5";
+import { SearchBox } from "./SearchBox";
 
 const Header = () => {
   const pathname = usePathname();
+  const [openSreachBox, setOpenSearchBox] = useState(false);
 
   return (
-    <header className="bg-[#fbfaf6] py-4 hidden md:block">
-      <div className="flex justify-between max-width text-white">
-        <div className="flex justify-center gap-3">
-          <Link href="#" target="_blank">
-            <FaFacebookF className="bg-[#1877F2] p-1.5 size-7 rounded-md text-base hover:bg-primary duration-300" />
-          </Link>
-          <Link href="#" target="_blank">
-            <FaXTwitter className="bg-[#1DA1F2] p-1.5 size-7 rounded-md text-base hover:bg-primary duration-300" />
-          </Link>
-          <Link href="#" target="_blank">
-            <FaInstagram className="bg-[#262626] p-1.5 size-7 rounded-md text-base hover:bg-primary duration-300" />
-          </Link>
-          <Link href="#" target="_blank">
-            <FaYoutube className="bg-[#FF0000] p-1.5 size-7 rounded-md text-base hover:bg-primary duration-300" />
-          </Link>
-        </div>
-        <nav className="flex gap-4 text-lg font-semibold">
+    <header className="bg-[#fbfaf6] hidden md:block">
+      <div className="flex justify-between items-center max-width">
+        <nav className="flex gap-4 py-2 text-lg">
           <Link
             href={"/about-us"}
             className={`${
               pathname === "/about-us" ? "text-primary" : ""
-            } text-black hover:text-primary duration-300`}
+            } hover:text-primary duration-300 font-ador`}
           >
-            আমাদের কথা
+            পরিচয়
           </Link>
           <Link
             href={"/authors"}
             className={`${
               pathname === "/authors" ? "text-primary" : ""
-            } text-black hover:text-primary duration-300`}
+            } hover:text-primary duration-300 font-ador`}
           >
-            লেখক তালিকা
+            বিজ্ঞপ্তি
           </Link>
           <Link
             href={"/notice"}
             className={`${
               pathname === "/notice" ? "text-primary" : ""
-            } text-black hover:text-primary duration-300`}
+            } hover:text-primary duration-300 font-ador`}
           >
-            নোটিশ বোর্ড
+            যোগাযোগ
           </Link>
         </nav>
+        <div className="relative">
+          <button
+            className={`z-10 relative size-10 flex items-center justify-center hover:text-primary text-black duration-300`}
+            onClick={() => setOpenSearchBox(!openSreachBox)}
+          >
+            {openSreachBox ? (
+              <ImCross className="text-xs" />
+            ) : (
+              <IoSearch className="text-xl" />
+            )}
+          </button>
+          {openSreachBox && <SearchBox isOpen={openSreachBox} />}
+        </div>
       </div>
     </header>
   );

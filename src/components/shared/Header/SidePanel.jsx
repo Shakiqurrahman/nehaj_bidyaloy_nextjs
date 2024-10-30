@@ -1,17 +1,72 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
-import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
-import { PiArrowLineLeftBold } from "react-icons/pi";
-import Logo from "/public/nehaz-bidyalay-logo.jpg";
+import { IoSearch } from "react-icons/io5";
 
 const SidePanel = ({ close, isOpen }) => {
   const pathname = usePathname();
+
+  const navLinks = [
+    {
+      categorySlug: "discipline",
+      category: "বিষয়",
+      subCategories: [
+        {
+          subCategorySlug: "thought",
+          subCategory: "চিন্তা",
+        },
+        {
+          subCategorySlug: "history-thought",
+          subCategory: "ইতিহাস-চিন্তা",
+        },
+        {
+          subCategorySlug: "literary-thought",
+          subCategory: "সাহিত্য-চিন্তা",
+        },
+        {
+          subCategorySlug: "art-thought",
+          subCategory: "শিল্প-চিন্তা",
+        },
+        {
+          subCategorySlug: "cinema-thought",
+          subCategory: "সিনেমা-চিন্তা",
+        },
+        {
+          subCategorySlug: "theology",
+          subCategory: "ধর্মতত্ত্ব",
+        },
+      ],
+    },
+    {
+      categorySlug: "genre",
+      category: "ধরণ",
+      subCategories: [
+        {
+          subCategorySlug: "article",
+          subCategory: "প্রবন্ধ",
+        },
+        {
+          subCategorySlug: "notes",
+          subCategory: "নোটস",
+        },
+        {
+          subCategorySlug: "translation",
+          subCategory: "অনুবাদ",
+        },
+      ],
+    },
+    {
+      categorySlug: "study-circle",
+      category: "পাঠচক্র",
+    },
+    {
+      categorySlug: "author",
+      category: "লেখক",
+    },
+  ];
 
   const dropdownRef = useRef(null);
 
@@ -28,71 +83,20 @@ const SidePanel = ({ close, isOpen }) => {
           isOpen ? "translate-x-0" : "-translate-x-full"
         } duration-500  h-full w-full max-w-[360px] bg-white shadow relative overflow-y-auto`}
       >
-        <div className="h-[50px] flex items-center pl-5 sticky top-0 bg-white">
-          <button
-            className="hover:text-primary duration-300"
-            onClick={() => close(false)}
-          >
-            <PiArrowLineLeftBold className="text-2xl" />
-          </button>
-        </div>
-        <div className="w-full sticky top-[50px] bg-white">
-          <Image
-            src={Logo}
-            alt="Nehaj-Bidyaloy Logo"
-            priority
-            placeholder="blur"
-            className="w-[100px] mx-auto block"
+        <form className="w-full p-3 relative">
+          <input
+            type="text"
+            placeholder="এখানে লিখুন..."
+            className="w-full block border-b-2 border-secondary outline-none p-3"
           />
-          <div className="flex justify-center gap-3 text-white py-5">
-            <Link href="#" target="_blank">
-              <FaFacebookF className="bg-[#1877F2] p-1.5 size-7 rounded-md text-base hover:bg-primary duration-300" />
-            </Link>
-            <Link href="#" target="_blank">
-              <FaXTwitter className="bg-[#1DA1F2] p-1.5 size-7 rounded-md text-base hover:bg-primary duration-300" />
-            </Link>
-            <Link href="#" target="_blank">
-              <FaInstagram className="bg-[#262626] p-1.5 size-7 rounded-md text-base hover:bg-primary duration-300" />
-            </Link>
-            <Link href="#" target="_blank">
-              <FaYoutube className="bg-[#FF0000] p-1.5 size-7 rounded-md text-base hover:bg-primary duration-300" />
-            </Link>
-          </div>
-        </div>
+          <button
+            type="submit"
+            className="absolute top-1/2 -translate-y-1/2 right-5"
+          >
+            <IoSearch className="text-2xl text-secondary" />
+          </button>
+        </form>
         <ul className="px-3">
-          <li>
-            <Link
-              onClick={() => close(false)}
-              href={"/about-us"}
-              className={`${
-                pathname === "/about-us" ? "text-primary" : ""
-              } block p-2 text-lg font-ador border-b hover:text-primary duration-300`}
-            >
-              আমাদের কথা
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={() => close(false)}
-              href={"/authors"}
-              className={`${
-                pathname === "/authors" ? "text-primary" : ""
-              } block p-2 text-lg font-ador border-b hover:text-primary duration-300`}
-            >
-              লেখক তালিকা
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={() => close(false)}
-              href={"/notice"}
-              className={`${
-                pathname === "/notice" ? "text-primary" : ""
-              } block p-2 text-lg font-ador border-b hover:text-primary duration-300`}
-            >
-              নোটিশ বোর্ড
-            </Link>
-          </li>
           <li>
             <button
               onClick={() => setIsCollapse(!isCollapse)}
