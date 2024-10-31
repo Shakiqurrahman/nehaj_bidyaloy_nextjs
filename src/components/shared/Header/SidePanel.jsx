@@ -19,20 +19,20 @@ const SidePanel = ({ isOpen }) => {
           subCategory: "চিন্তা",
         },
         {
-          subCategorySlug: "history-thought",
-          subCategory: "ইতিহাস-চিন্তা",
+          subCategorySlug: "history",
+          subCategory: "ইতিহাস",
         },
         {
-          subCategorySlug: "literary-thought",
-          subCategory: "সাহিত্য-চিন্তা",
+          subCategorySlug: "literary",
+          subCategory: "সাহিত্য",
         },
         {
-          subCategorySlug: "art-thought",
-          subCategory: "শিল্প-চিন্তা",
+          subCategorySlug: "art",
+          subCategory: "শিল্প",
         },
         {
-          subCategorySlug: "cinema-thought",
-          subCategory: "সিনেমা-চিন্তা",
+          subCategorySlug: "cinema",
+          subCategory: "সিনেমা",
         },
         {
           subCategorySlug: "theology",
