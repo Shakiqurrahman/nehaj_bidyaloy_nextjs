@@ -11,10 +11,10 @@ const Footer = () => {
                     <Image
                         src={Logo}
                         alt="Nehaj Bidyaloy Logo"
-                        className="w-[140px] sm:w-[200px] md:mb-3"
+                        className="w-[105px] sm:w-[160px] md:mb-3"
                         priority
                     />
-                    <p className="block mt-4 ml-6">
+                    <p className="block mt-4">
                     নেহাজ-এ প্রকাশিত কোনো লেখা, ছবি কিংবা শিল্পকর্ম লেখক
                         অথবা কর্তৃপক্ষের অনুমতি ছাড়া কোথাও প্রকাশ করা অবৈধ৷
                     </p>
@@ -22,7 +22,7 @@ const Footer = () => {
                 <div className="h-[150px] w-1 border-r border-primary-500 hidden md:block"></div>
                 
                 <div>
-                    <nav className="flex flex-row ml-6 gap-10 py-2 text-lg">
+                    <nav className="flex flex-row gap-10 py-2 text-lg">
                         <Link
                             href={"/about-us"}
                             className={`text-black hover:text-primary duration-300 font-ador`}
