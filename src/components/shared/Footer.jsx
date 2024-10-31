@@ -6,22 +6,23 @@ import Logo from "/public/nehaj-logo-transparent.png";
 const Footer = () => {
     return (
         <footer className="bg-[#fbfaf6] text-black  mt-10 border-black">
-            <div className="flex gap-4 max-width items-center justify-between">
-                <div className="text-base mb-3 w-1/5">
+            <div className="flex flex-col md:flex-row gap-4 max-width md:items-center justify-between pt-8 md:pt-20">
+                <div className="text-base md:w-1/5">
                     <Image
                         src={Logo}
                         alt="Nehaj Bidyaloy Logo"
-                        className="w-[120px] sm:w-[200px]"
+                        className="w-[140px] sm:w-[200px] md:mb-3"
                         priority
                     />
-                    <p>
-                        যোগাযোগ-এ প্রকাশিত কোনো লেখা, ছবি কিংবা শিল্পকর্ম লেখক
+                    <p className="block mt-4 ml-6">
+                    নেহাজ-এ প্রকাশিত কোনো লেখা, ছবি কিংবা শিল্পকর্ম লেখক
                         অথবা কর্তৃপক্ষের অনুমতি ছাড়া কোথাও প্রকাশ করা অবৈধ৷
                     </p>
                 </div>
-                <div className="h-[150px] w-1 border-r border-primary-500"></div>
+                <div className="h-[150px] w-1 border-r border-primary-500 hidden md:block"></div>
+                
                 <div>
-                    <nav className="flex gap-10 py-2 text-lg">
+                    <nav className="flex flex-row ml-6 gap-10 py-2 text-lg">
                         <Link
                             href={"/about-us"}
                             className={`text-black hover:text-primary duration-300 font-ador`}
@@ -42,15 +43,13 @@ const Footer = () => {
                         </Link>
                     </nav>
                 </div>
-                <div className="h-[150px] w-1 border-r border-primary-500"></div>
+                <div className="h-[150px] w-1 border-r border-primary-500 hidden md:block"></div>
+                <div className="h-1 w-full border-t border-primary-500 md:hidden block"></div>
 
                 <div className="flex justify-center items-center gap-3 text-white">
                     <Link href="#" target="_blank">
                         <FaFacebookF className="bg-primary p-2 size-8 rounded-md text-base hover:-translate-y-2 hover:opacity-85 duration-300" />
                     </Link>
-                    {/* <Link href="#" target="_blank">
-                        <FaXTwitter className="bg-[#1DA1F2] p-2 size-8 rounded-md text-base hover:-translate-y-2 hover:opacity-85 duration-300" />
-                    </Link> */}
                     <Link href="#" target="_blank">
                         <FaInstagram className="bg-primary p-2 size-8 rounded-md text-base hover:-translate-y-2 hover:opacity-85 duration-300" />
                     </Link>
