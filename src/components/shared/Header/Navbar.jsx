@@ -23,20 +23,20 @@ const Navbar = () => {
           subCategory: "চিন্তা",
         },
         {
-          subCategorySlug: "history-thought",
-          subCategory: "ইতিহাস-চিন্তা",
+          subCategorySlug: "history",
+          subCategory: "ইতিহাস",
         },
         {
-          subCategorySlug: "literary-thought",
-          subCategory: "সাহিত্য-চিন্তা",
+          subCategorySlug: "literary",
+          subCategory: "সাহিত্য",
         },
         {
-          subCategorySlug: "art-thought",
-          subCategory: "শিল্প-চিন্তা",
+          subCategorySlug: "art",
+          subCategory: "শিল্প",
         },
         {
-          subCategorySlug: "cinema-thought",
-          subCategory: "সিনেমা-চিন্তা",
+          subCategorySlug: "cinema",
+          subCategory: "সিনেমা",
         },
         {
           subCategorySlug: "theology",
@@ -153,7 +153,7 @@ const Navbar = () => {
                     )}
                   </Link>
                   {links?.subCategories?.length > 0 && (
-                    <ul className="absolute top-full right-0 w-[200px] py-2 bg-white shadow opacity-0 invisible group-hover:opacity-100 group-hover:visible duration-300 z-[99]">
+                    <ul className="absolute top-full right-0 w-[200px] pl-4 py-2 bg-white shadow opacity-0 invisible group-hover:opacity-100 group-hover:visible duration-300 z-[99]">
                       {links?.subCategories?.map((subLinks, index) => (
                         <li key={index}>
                           <Link
