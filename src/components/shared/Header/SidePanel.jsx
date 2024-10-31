@@ -139,7 +139,7 @@ const SidePanel = ({ isOpen }) => {
                     transition: "height 0.3s ease",
                   }}
                 >
-                  <ul className="pl-10">
+                  <ul className="pl-4">
                     {links?.subCategories?.map((subLinks, index) => (
                       <li key={index}>
                         <Link
