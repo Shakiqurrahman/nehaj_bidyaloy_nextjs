@@ -1,6 +1,3 @@
-import Footer from "@/components/shared/Footer";
-import Header from "@/components/shared/Header/Header";
-import Navbar from "@/components/shared/Header/Navbar";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
@@ -20,10 +17,7 @@ export default function RootLayout({ children }) {
         <html lang="en" className={notoSans.className}>
             <body>
                 <StoreProvider>
-                    <Header />
-                    <Navbar />
                     <main>{children}</main>
-                    <Footer />
                 </StoreProvider>
             </body>
         </html>
