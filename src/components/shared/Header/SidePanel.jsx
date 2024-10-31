@@ -76,8 +76,6 @@ const SidePanel = ({ isOpen }) => {
     setIsCollapse(isCollapse === id ? null : id);
   };
 
-  console.log(isCollapse);
-
   return (
     <div
       className={`sm:hidden absolute top-full left-0  w-full bg-white duration-500 border-t z-[99999] ${
