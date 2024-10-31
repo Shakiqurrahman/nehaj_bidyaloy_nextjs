@@ -6,11 +6,11 @@ const utilsSlice = createSlice({
         activeHamburger: false,
     },
     reducers: {
-        setActiveHamburger: (state, action) => {
+        setActiveHamburgerD: (state, action) => {
             state.activeHamburger = action.payload;
         },
     },
 });
 
-export const { setActiveHamburger } = utilsSlice.actions;
+export const { setActiveHamburgerD } = utilsSlice.actions;
 export default utilsSlice.reducer;
