@@ -1,11 +1,5 @@
-import { Noto_Sans } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
-
-const notoSans = Noto_Sans({
-    subsets: ["latin"],
-    display: "swap",
-});
 
 export const metadata = {
     title: "Nehaj Bidyaloy",
@@ -14,7 +8,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en" className={notoSans.className}>
+        <html lang="en">
             <body>
                 <StoreProvider>
                     <main>{children}</main>

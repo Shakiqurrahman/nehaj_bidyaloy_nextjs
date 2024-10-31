@@ -65,7 +65,7 @@ const Footer = () => {
                     </p>
                 </div>
             </div>
-            <p className="text-center py-3">
+            <p className="text-center py-3 mt-10 border-t ">
                 www.nehaj-bidyaloy.com Developed by{" "}
                 <Link
                     className="hover:underline hover:text-primary duration-300 font-bold"
