@@ -1,4 +1,4 @@
-import { api } from "@/config/config";
+import { api } from "@/utils/config";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const userApiSlice = createApi({
     reducerPath: "user",
