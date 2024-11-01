@@ -42,7 +42,7 @@ const Header = () => {
         </nav>
         <div className="relative">
           <button
-            className={`z-10 relative size-10 flex items-center justify-center hover:text-primary text-black duration-300`}
+            className={`z-10 bg-[#fbfaf6] relative size-10 flex items-center justify-center hover:text-primary text-black duration-300`}
             onClick={() => setOpenSearchBox(!openSreachBox)}
           >
             {openSreachBox ? (
@@ -51,7 +51,7 @@ const Header = () => {
               <IoSearch className="text-xl" />
             )}
           </button>
-          {openSreachBox && <SearchBox isOpen={openSreachBox} />}
+          <SearchBox isOpen={openSreachBox} />
         </div>
       </div>
     </header>
