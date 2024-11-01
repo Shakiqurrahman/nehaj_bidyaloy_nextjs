@@ -1,25 +1,51 @@
 "use client";
 
+import { useLoginUserMutation } from "@/Redux/api/userApiSlice";
+import { setAccessToken, setUserData } from "@/Redux/features/userSlice";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 
 const NehajAdminLogin = () => {
+    const dispatch = useDispatch();
+    const { accessToken, user } = useSelector((state) => state.user);
+    console.log("token", accessToken, user);
+
     const [form, setForm] = useState({
         email: "",
         password: "",
     });
 
     const [showPassword, setShowPassword] = useState(false);
+    const [loginUser, { isLoading: isLoggingIn }] = useLoginUserMutation();
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const { email, password } = form;
+
         if (email && password) {
-            console.log(form);
+            try {
+                const result = await loginUser({ email, password }).unwrap();
+                if (result.success) {
+                    dispatch(setAccessToken(result.accessToken));
+                    dispatch(setUserData(result.user));
+                    redirect("/admin-dashboard");
+                }
+                console.log(
+                    "Login successful:",
+                    result,
+                    "token",
+                    result?.token
+                );
+            } catch (error) {
+                console.error("Operation failed:", error);
+                alert("An error occurred. Please try again.");
+            }
         } else {
             alert("All Fields Are Required!!!");
         }
